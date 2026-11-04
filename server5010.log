@@ -1,0 +1,157 @@
+[DB] Checking if database 'agrisearch' exists...
+[OK] Database 'agrisearch' already exists
+2026-09-07 00:33:01,979 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2026-09-07 00:33:01,980 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:01,983 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2026-09-07 00:33:01,985 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:01,988 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2026-09-07 00:33:01,990 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:01,993 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-09-07 00:33:01,995 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`users`
+2026-09-07 00:33:01,997 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,017 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`user_approval_audits`
+2026-09-07 00:33:02,017 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,037 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`password_resets`
+2026-09-07 00:33:02,038 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,060 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`farms`
+2026-09-07 00:33:02,061 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,069 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`crops`
+2026-09-07 00:33:02,070 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,082 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`crop_growth_records`
+2026-09-07 00:33:02,083 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,094 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supplies`
+2026-09-07 00:33:02,095 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,102 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supply_inventory`
+2026-09-07 00:33:02,103 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,121 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supply_distributions`
+2026-09-07 00:33:02,123 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,135 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supply_usage_records`
+2026-09-07 00:33:02,135 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,149 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`farm_supply_inventory`
+2026-09-07 00:33:02,149 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,161 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`farm_supply_usage`
+2026-09-07 00:33:02,161 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,168 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`livestock`
+2026-09-07 00:33:02,169 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,182 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`nutrition_records`
+2026-09-07 00:33:02,183 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,194 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`health_records`
+2026-09-07 00:33:02,195 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,202 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`productivity_records`
+2026-09-07 00:33:02,203 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,216 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`livestock_events`
+2026-09-07 00:33:02,217 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,228 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`livestock_weight_logs`
+2026-09-07 00:33:02,228 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,236 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`vaccine_inventory`
+2026-09-07 00:33:02,236 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,250 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`vaccine_disposals`
+2026-09-07 00:33:02,250 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,262 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`disease_records`
+2026-09-07 00:33:02,263 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,270 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`health_alerts`
+2026-09-07 00:33:02,271 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,283 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`distribution_requests`
+2026-09-07 00:33:02,283 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,295 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`distribution_events`
+2026-09-07 00:33:02,296 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,310 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`distribution_records`
+2026-09-07 00:33:02,312 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,327 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`municipal_offers`
+2026-09-07 00:33:02,328 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,336 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`municipal_offer_claims`
+2026-09-07 00:33:02,336 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,350 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`chat_conversations`
+2026-09-07 00:33:02,350 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,361 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`chat_messages`
+2026-09-07 00:33:02,362 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,370 INFO sqlalchemy.engine.Engine COMMIT
+2026-09-07 00:33:02,375 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-09-07 00:33:02,378 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`users`
+2026-09-07 00:33:02,380 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,393 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`user_approval_audits`
+2026-09-07 00:33:02,394 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,406 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`password_resets`
+2026-09-07 00:33:02,407 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,428 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`farms`
+2026-09-07 00:33:02,428 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,436 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`crops`
+2026-09-07 00:33:02,436 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,450 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`crop_growth_records`
+2026-09-07 00:33:02,450 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,461 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supplies`
+2026-09-07 00:33:02,462 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,469 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supply_inventory`
+2026-09-07 00:33:02,470 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,484 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supply_distributions`
+2026-09-07 00:33:02,485 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,496 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`supply_usage_records`
+2026-09-07 00:33:02,497 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,511 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`farm_supply_inventory`
+2026-09-07 00:33:02,512 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,520 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`farm_supply_usage`
+2026-09-07 00:33:02,523 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,533 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`livestock`
+2026-09-07 00:33:02,533 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,548 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`nutrition_records`
+2026-09-07 00:33:02,549 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,561 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`health_records`
+2026-09-07 00:33:02,562 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,571 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`productivity_records`
+2026-09-07 00:33:02,572 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,582 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`livestock_events`
+2026-09-07 00:33:02,583 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,596 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`livestock_weight_logs`
+2026-09-07 00:33:02,597 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,608 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`vaccine_inventory`
+2026-09-07 00:33:02,609 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,617 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`vaccine_disposals`
+2026-09-07 00:33:02,617 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,631 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`disease_records`
+2026-09-07 00:33:02,632 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,643 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`health_alerts`
+2026-09-07 00:33:02,643 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,652 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`distribution_requests`
+2026-09-07 00:33:02,652 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,665 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`distribution_events`
+2026-09-07 00:33:02,665 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,677 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`distribution_records`
+2026-09-07 00:33:02,678 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,686 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`municipal_offers`
+2026-09-07 00:33:02,686 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,700 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`municipal_offer_claims`
+2026-09-07 00:33:02,700 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,716 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`chat_conversations`
+2026-09-07 00:33:02,717 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,733 INFO sqlalchemy.engine.Engine DESCRIBE `agrisearch`.`chat_messages`
+2026-09-07 00:33:02,734 INFO sqlalchemy.engine.Engine [raw sql] {}
+2026-09-07 00:33:02,751 INFO sqlalchemy.engine.Engine COMMIT
+ * Serving Flask app 'app'
+ * Debug mode: on
+2026-09-07 00:33:19,481 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-09-07 00:33:19,486 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.first_name AS users_first_name, users.middle_name AS users_middle_name, users.last_name AS users_last_name, users.role AS users_role, users.barangay_id AS users_barangay_id, users.barangay_name AS users_barangay_name, users.is_active AS users_is_active, users.is_verified AS users_is_verified, users.account_status AS users_account_status, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = %(pk_1)s
+2026-09-07 00:33:19,487 INFO sqlalchemy.engine.Engine [generated in 0.00115s] {'pk_1': 1}
+2026-09-07 00:33:19,495 INFO sqlalchemy.engine.Engine SELECT supplies.id AS supplies_id, supplies.supply_type AS supplies_supply_type, supplies.name AS supplies_name, supplies.description AS supplies_description, supplies.unit AS supplies_unit, supplies.unit_cost AS supplies_unit_cost, supplies.reorder_level AS supplies_reorder_level, supplies.created_at AS supplies_created_at, supplies.updated_at AS supplies_updated_at 
+FROM supplies ORDER BY supplies.name ASC
+2026-09-07 00:33:19,495 INFO sqlalchemy.engine.Engine [generated in 0.00083s] {}
+2026-09-07 00:33:19,499 INFO sqlalchemy.engine.Engine SELECT supply_inventory.id AS supply_inventory_id, supply_inventory.supply_id AS supply_inventory_supply_id, supply_inventory.quantity_available AS supply_inventory_quantity_available, supply_inventory.quantity_reserved AS supply_inventory_quantity_reserved, supply_inventory.warehouse_location AS supply_inventory_warehouse_location, supply_inventory.last_updated AS supply_inventory_last_updated, supply_inventory.created_at AS supply_inventory_created_at 
+FROM supply_inventory 
+WHERE supply_inventory.supply_id = %(supply_id_1)s
+2026-09-07 00:33:19,500 INFO sqlalchemy.engine.Engine [generated in 0.00111s] {'supply_id_1': 1}
+2026-09-07 00:33:19,503 INFO sqlalchemy.engine.Engine SELECT supply_inventory.id AS supply_inventory_id, supply_inventory.supply_id AS supply_inventory_supply_id, supply_inventory.quantity_available AS supply_inventory_quantity_available, supply_inventory.quantity_reserved AS supply_inventory_quantity_reserved, supply_inventory.warehouse_location AS supply_inventory_warehouse_location, supply_inventory.last_updated AS supply_inventory_last_updated, supply_inventory.created_at AS supply_inventory_created_at 
+FROM supply_inventory 
+WHERE %(param_1)s = supply_inventory.supply_id
+2026-09-07 00:33:19,504 INFO sqlalchemy.engine.Engine [generated in 0.00085s] {'param_1': 1}
+2026-09-07 00:33:19,516 INFO sqlalchemy.engine.Engine SELECT distribution_records.id AS distribution_records_id, distribution_records.request_id AS distribution_records_request_id, distribution_records.event_id AS distribution_records_event_id, distribution_records.quantity_distributed AS distribution_records_quantity_distributed, distribution_records.remarks AS distribution_records_remarks, distribution_records.status AS distribution_records_status, distribution_records.distributed_by_id AS distribution_records_distributed_by_id, distribution_records.distribution_time AS distribution_records_distribution_time, distribution_records.verification_code AS distribution_records_verification_code, distribution_records.verified_at AS distribution_records_verified_at, distribution_records.verified_by_id AS distribution_records_verified_by_id, distribution_records.verification_notes AS distribution_records_verification_notes, distribution_records.created_at AS distribution_records_created_at, distribution_records.updated_at AS distribution_records_updated_at 
+FROM distribution_records INNER JOIN distribution_requests ON distribution_records.request_id = distribution_requests.id ORDER BY distribution_records.created_at DESC 
+ LIMIT %(param_1)s
+2026-09-07 00:33:19,517 INFO sqlalchemy.engine.Engine [generated in 0.00092s] {'param_1': 100}
+2026-09-07 00:33:19,650 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-09-07 00:34:36,418 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-09-07 00:34:36,419 INFO sqlalchemy.engine.Engine SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.first_name AS users_first_name, users.middle_name AS users_middle_name, users.last_name AS users_last_name, users.role AS users_role, users.barangay_id AS users_barangay_id, users.barangay_name AS users_barangay_name, users.is_active AS users_is_active, users.is_verified AS users_is_verified, users.account_status AS users_account_status, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.last_login AS users_last_login 
+FROM users 
+WHERE users.id = %(pk_1)s
+2026-09-07 00:34:36,419 INFO sqlalchemy.engine.Engine [cached since 76.93s ago] {'pk_1': 1}
+2026-09-07 00:34:36,432 INFO sqlalchemy.engine.Engine ROLLBACK

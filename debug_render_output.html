@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System User Management - AgriSearch - Victoria, Laguna</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/agrisearch_logo.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --secondary-color: #3b82f6;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --success-color: #10b981;
+            --gray-light: #f3f4f6;
+            --gray-darker: #1f2937;
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9fafb;
+            color: var(--gray-darker);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: var(--gray-darker);
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d1d5db;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .alert-success {
+            background-color: #d1fae5;
+            border: 1px solid var(--success-color);
+            color: #065f46;
+        }
+        
+        .alert-error {
+            background-color: #fee2e2;
+            border: 1px solid var(--danger-color);
+            color: #7f1d1d;
+        }
+        
+        .alert-warning {
+            background-color: #fef3c7;
+            border: 1px solid var(--warning-color);
+            color: #78350f;
+        }
+        
+        .alert-info {
+            background-color: #dbeafe;
+            border: 1px solid var(--secondary-color);
+            color: #1e3a8a;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-logo-img {
+            width: 2rem;
+            height: 2rem;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .sidebar-logo-img {
+            width: 2rem;
+            height: 2rem;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @media (max-width: 640px) {
+            .form-input {
+                font-size: 16px;
+            }
+        }
+
+        /* ——— Danger Button ——— */
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 0.625rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+        .btn-danger:active {
+            transform: translateY(0);
+        }
+
+        /* ——— Form Label ——— */
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ——— Status Badges ——— */
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.625rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        .badge-info {
+            background-color: #dbeafe;
+            color: #1e3a8a;
+        }
+        .badge-danger {
+            background-color: #fee2e2;
+            color: #7f1d1d;
+        }
+        .badge-gray {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+    </style>
+    
+    
+</head>
+<body>
+    
+    
+    <!-- Top Navigation Bar (Minimal) -->
+    <nav class="navbar auth-page">
+        <div class="px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Left: Hamburger + Logo (Mobile), Hamburger only (Desktop) -->
+                <div class="flex items-center gap-4">
+                    
+                    <div class="hidden md:flex items-center gap-2">
+                        <img src="/static/agrisearch_logo.png" alt="AgriSearch Logo" class="brand-logo-img">
+                        <a href="/" class="logo">AgriSearch</a>
+                    </div>
+                </div>
+                
+                <!-- Right: User Menu -->
+                
+                <div class="flex gap-2">
+                    <a href="/auth/login" class="btn-secondary text-sm">Login</a>
+                    <a href="/auth/register" class="btn-primary text-sm">Register</a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content Wrapper -->
+    <main class="transition-all duration-300 auth-page">
+    
+    <!-- Flash Messages -->
+    <div class="flash-messages max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+            
+        
+    </div>
+    
+    <!-- Main Content -->
+    
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Header -->
+    <div class="mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">
+            <i class="fas fa-users-cog text-red-600 mr-3"></i>System User Management
+        </h1>
+        <p class="text-gray-600">Full system control over all user accounts</p>
+    </div>
+
+    <!-- Statistics -->
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-6 mb-12">
+        <div class="card p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-600 text-sm font-medium">Total Users</p>
+                    <p class="text-3xl font-bold text-blue-600 mt-2">1</p>
+                </div>
+                <div class="text-5xl text-blue-100">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-600 text-sm font-medium">Active</p>
+                    <p class="text-3xl font-bold text-green-600 mt-2">1</p>
+                </div>
+                <div class="text-5xl text-green-100">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-600 text-sm font-medium">Verified</p>
+                    <p class="text-3xl font-bold text-blue-600 mt-2">1</p>
+                </div>
+                <div class="text-5xl text-blue-100">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="card p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-600 text-sm font-medium">System Admin</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">1</p>
+                </div>
+                <div class="text-5xl text-gray-100">
+                    
+                        <i class="fas fa-crown"></i>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Users Table -->
+    <div class="card overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Name</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Email</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Username</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Role</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Status</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Verified</th>
+                        <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Joined</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    
+                        
+                        <tr class="hover:bg-gray-50 transition cursor-pointer" onclick="openUserModal(1, "System Administrator", "admin@agrisearch.local", "admin_system", "system_admin", true, true)">
+                            <!-- Name -->
+                            <td class="px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 font-semibold text-sm">
+                                        S
+                                    </div>
+                                    <p class="font-semibold text-gray-900">System Administrator</p>
+                                </div>
+                            </td>
+
+                            <!-- Email -->
+                            <td class="px-6 py-4">
+                                <p class="text-gray-600">admin@agrisearch.local</p>
+                            </td>
+
+                            <!-- Username -->
+                            <td class="px-6 py-4">
+                                <p class="font-medium text-gray-900 font-mono text-sm">admin_system</p>
+                            </td>
+
+                            <!-- Role -->
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-full">
+                                    System Admin
+                                </span>
+                            </td>
+
+                            <!-- Status -->
+                            <td class="px-6 py-4">
+                                
+                                    <span class="inline-flex items-center gap-2 px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full">
+                                        <i class="fas fa-check-circle"></i> Active
+                                    </span>
+                                
+                            </td>
+
+                            <!-- Verified -->
+                            <td class="px-6 py-4">
+                                
+                                    <span class="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
+                                        <i class="fas fa-shield-alt"></i> Yes
+                                    </span>
+                                
+                            </td>
+
+                            <!-- Joined Date -->
+                            <td class="px-6 py-4">
+                                <p class="text-gray-600 text-sm">Feb 20, 2026</p>
+                            </td>
+                        </tr>
+                        
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="mt-8">
+        <a href="/dashboard/admin/system" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium rounded-lg transition">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+</div>
+
+<!-- Unified User Management Modal -->
+<div id="userModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto">
+    <div class="bg-white rounded-lg shadow-2xl max-w-2xl mx-4 my-8">
+        <div class="p-6">
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <h3 class="text-2xl font-semibold text-gray-900">
+                    <i class="fas fa-user-cog text-blue-600 mr-3"></i><span id="modalUserName"></span>
+                </h3>
+                <button type="button" onclick="closeUserModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="flex gap-2 mb-6 border-b">
+                <button onclick="switchTab('edit')" class="tab-btn active px-4 py-2 font-medium text-blue-600 border-b-2 border-blue-600 transition">
+                    <i class="fas fa-edit mr-2"></i>Edit Profile
+                </button>
+                <button onclick="switchTab('actions')" class="tab-btn px-4 py-2 font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent transition">
+                    <i class="fas fa-ellipsis-h mr-2"></i>Actions
+                </button>
+            </div>
+
+            <!-- Edit Tab -->
+            <div id="editTab" class="tab-content">
+                <form id="editUserForm" method="POST">
+                    <!-- Full Name -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="modalFullName" name="full_name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="modalEmail" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    </div>
+
+                    <!-- Username -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                        <input type="text" id="modalUsername" name="username" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    </div>
+
+                    <!-- Role -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                        <select id="modalRole" name="role" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="farmer">Farmer</option>
+                            <option value="victoria_admin">Victoria Admin</option>
+                            <option value="system_admin">System Admin</option>
+                        </select>
+                    </div>
+
+                    <!-- Active Status -->
+                    <div class="mb-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="modalIsActive" name="is_active" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500" />
+                            <span class="ml-2 text-sm font-medium text-gray-700">Active Account</span>
+                        </label>
+                    </div>
+
+                    <!-- Password (Optional) -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">New Password <span class="text-xs text-gray-500">(leave empty to keep current)</span></label>
+                        <input type="password" id="modalPassword" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" />
+                    </div>
+
+                    <div id="editError" class="mb-4 p-3 bg-red-50 text-red-700 rounded-lg hidden text-sm"></div>
+
+                    <!-- Edit Buttons -->
+                    <div class="flex gap-3">
+                        <button type="button" onclick="closeUserModal()" class="flex-1 px-4 py-2 text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-lg font-medium transition">
+                            <i class="fas fa-times mr-2"></i>Cancel
+                        </button>
+                        <button type="submit" class="flex-1 px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition">
+                            <i class="fas fa-save mr-2"></i>Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Actions Tab -->
+            <div id="actionsTab" class="tab-content hidden">
+                <div class="space-y-3">
+                    <!-- Verify Button -->
+                    <button id="verifyBtn" type="button" class="w-full px-4 py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg font-medium transition flex items-center gap-2 hidden">
+                        <i class="fas fa-check"></i> Verify User Account
+                    </button>
+
+                    <!-- Delete Button -->
+                    <button id="deleteBtn" type="button" onclick="confirmDelete()" class="w-full px-4 py-3 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg font-medium transition flex items-center gap-2 hidden">
+                        <i class="fas fa-trash-alt"></i> Delete User
+                    </button>
+
+                    <div id="actionMessage" class="p-3 bg-gray-50 text-gray-600 rounded-lg text-sm hidden">
+                        <i class="fas fa-info-circle mr-2"></i>No actions available for this user.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="confirmDeleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg shadow-2xl max-w-sm mx-4">
+        <div class="p-6">
+            <div class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4">
+                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 text-center mb-2">Delete User?</h3>
+            <p class="text-gray-600 text-center mb-2">Are you sure you want to delete <strong id="confirmDeleteName"></strong>?</p>
+            <p class="text-red-600 text-center text-sm mb-6">This action cannot be undone.</p>
+            <div class="flex gap-3">
+                <button onclick="closeConfirmDelete()" class="flex-1 px-4 py-2 text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-lg font-medium transition">
+                    Cancel
+                </button>
+                <button onclick="proceedDelete()" class="flex-1 px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg font-medium transition">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentUserId = null;
+let currentAdminId = 1;
+
+// Tab switching
+function switchTab(tab) {
+    console.log('[DEBUG] switchTab called with:', tab);
+    
+    // Hide all tabs
+    document.getElementById('editTab').classList.add('hidden');
+    document.getElementById('actionsTab').classList.add('hidden');
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'border-blue-600', 'text-blue-600');
+        btn.classList.add('text-gray-600', 'border-transparent');
+    });
+    
+    // Show selected tab
+    const tabElement = document.getElementById(tab + 'Tab');
+    console.log('[DEBUG] Tab element:', tabElement);
+    tabElement.classList.remove('hidden');
+    
+    // Add active class to clicked button
+    const clickedBtn = event.target.closest('.tab-btn');
+    console.log('[DEBUG] Clicked button:', clickedBtn);
+    clickedBtn.classList.add('active', 'border-blue-600', 'text-blue-600');
+    clickedBtn.classList.remove('text-gray-600', 'border-transparent');
+}
+
+// Open User Management Modal
+function openUserModal(userId, fullName, email, username, role, isActive, isVerified) {
+    console.log('[DEBUG] openUserModal called with:', {userId, fullName, email, username, role, isActive, isVerified});
+    
+    currentUserId = userId;
+    
+    // Populate edit form
+    document.getElementById('modalUserName').textContent = fullName;
+    document.getElementById('modalFullName').value = fullName;
+    document.getElementById('modalEmail').value = email;
+    document.getElementById('modalUsername').value = username;
+    document.getElementById('modalRole').value = role;
+    document.getElementById('modalIsActive').checked = isActive;
+    document.getElementById('modalPassword').value = '';
+    document.getElementById('editError').classList.add('hidden');
+    
+    // Handle actions visibility
+    const verifyBtn = document.getElementById('verifyBtn');
+    const deleteBtn = document.getElementById('deleteBtn');
+    const actionMessage = document.getElementById('actionMessage');
+    
+    console.log('[DEBUG] isVerified:', isVerified, 'type:', typeof isVerified);
+    console.log('[DEBUG] currentAdminId:', currentAdminId, 'userId:', userId);
+    
+    verifyBtn.classList.add('hidden');
+    deleteBtn.classList.add('hidden');
+    actionMessage.classList.add('hidden');
+    
+    // Show verify button if not verified
+    if (!isVerified) {
+        console.log('[DEBUG] Showing verify button');
+        verifyBtn.classList.remove('hidden');
+        verifyBtn.onclick = () => submitVerify();
+    }
+    
+    // Show delete button if not current admin
+    if (userId !== currentAdminId) {
+        console.log('[DEBUG] Showing delete button');
+        deleteBtn.classList.remove('hidden');
+    } else {
+        console.log('[DEBUG] User is current admin, hiding delete');
+        actionMessage.innerHTML = '<i class="fas fa-info-circle mr-2"></i>You cannot modify your own account here.';
+        actionMessage.classList.remove('hidden');
+    }
+    
+    const modal = document.getElementById('userModal');
+    console.log('[DEBUG] Modal element:', modal);
+    console.log('[DEBUG] Modal has hidden class:', modal.classList.contains('hidden'));
+    
+    modal.classList.remove('hidden');
+    
+    console.log('[DEBUG] After removing hidden, has hidden class:', modal.classList.contains('hidden'));
+}
+
+function closeUserModal() {
+    console.log('[DEBUG] closeUserModal called');
+    currentUserId = null;
+    document.getElementById('userModal').classList.add('hidden');
+    // Reset to edit tab
+    document.getElementById('editTab').classList.remove('hidden');
+    document.getElementById('actionsTab').classList.add('hidden');
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        if (i === 0) {
+            btn.classList.add('active', 'border-blue-600', 'text-blue-600');
+            btn.classList.remove('text-gray-600', 'border-transparent');
+        } else {
+            btn.classList.remove('active', 'border-blue-600', 'text-blue-600');
+            btn.classList.add('text-gray-600', 'border-transparent');
+        }
+    });
+    console.log('[DEBUG] Modal hidden');
+}
+
+// Submit Edit Form
+document.getElementById('editUserForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (currentUserId) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/dashboard/admin/user/${currentUserId}/edit`;
+        
+        const fullName = document.getElementById('modalFullName').value;
+        const email = document.getElementById('modalEmail').value;
+        const username = document.getElementById('modalUsername').value;
+        const role = document.getElementById('modalRole').value;
+        const isActive = document.getElementById('modalIsActive').checked ? '1' : '0';
+        const password = document.getElementById('modalPassword').value;
+        
+        // Create input fields using DOM methods to avoid template literal issues
+        const inputs = [
+            { name: 'full_name', value: fullName },
+            { name: 'email', value: email },
+            { name: 'username', value: username },
+            { name: 'role', value: role },
+            { name: 'is_active', value: isActive }
+        ];
+        
+        if (password) {
+            inputs.push({ name: 'password', value: password });
+        }
+        
+        inputs.forEach(input => {
+            const inputElem = document.createElement('input');
+            inputElem.type = 'hidden';
+            inputElem.name = input.name;
+            inputElem.value = input.value;
+            form.appendChild(inputElem);
+        });
+        
+        document.body.appendChild(form);
+        form.submit();
+    }
+});
+
+// Verify user
+function submitVerify() {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = `/dashboard/admin/user/${currentUserId}/verify`;
+    document.body.appendChild(form);
+    form.submit();
+}
+
+// Delete confirmation
+function confirmDelete() {
+    document.getElementById('confirmDeleteName').textContent = document.getElementById('modalUserName').textContent;
+    document.getElementById('confirmDeleteModal').classList.remove('hidden');
+}
+
+function closeConfirmDelete() {
+    document.getElementById('confirmDeleteModal').classList.add('hidden');
+}
+
+function proceedDelete() {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = `/dashboard/admin/user/${currentUserId}/delete`;
+    document.body.appendChild(form);
+    form.submit();
+}
+
+// Close modal when clicking outside
+document.getElementById('userModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeUserModal();
+    }
+});
+
+document.getElementById('confirmDeleteModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeConfirmDelete();
+    }
+});
+</script>
+
+    
+    </main>
+    
+    <!-- Footer (hidden on dashboard, farm, livestock, health, crop, supply, and distribution routes) -->
+    
+    
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-2xl max-w-sm mx-4">
+            <div class="p-6">
+                <div class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4">
+                    <i class="fas fa-sign-out-alt text-red-600 text-xl"></i>
+                </div>
+                
+                <h3 class="text-lg font-semibold text-gray-900 text-center mb-2">
+                    Confirm Logout
+                </h3>
+                
+                <p class="text-gray-600 text-center mb-6">
+                    Are you sure you want to logout? You'll need to login again to access your account.
+                </p>
+                
+                <div class="flex gap-3">
+                    <button onclick="closeLogoutModal()" class="flex-1 px-4 py-2 text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-lg font-medium transition">
+                        <i class="fas fa-times mr-2"></i>Cancel
+                    </button>
+                    <button onclick="proceedLogout()" class="flex-1 px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg font-medium transition">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="/static/js/sidebar.js"></script>
+    <script src="/static/js/main.js"></script>
+    
+    <script>
+        // Auto-hide flash messages after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    alert.style.opacity = '0';
+                    alert.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => {
+                        alert.style.display = 'none';
+                    }, 300);
+                }, 5000);
+            });
+        });
+        
+        function confirmLogout() {
+            document.getElementById('logoutModal').classList.remove('hidden');
+        }
+        
+        function closeLogoutModal() {
+            document.getElementById('logoutModal').classList.add('hidden');
+        }
+        
+        function proceedLogout() {
+            window.location.href = '/auth/logout';
+        }
+        
+        // Close modal if user clicks outside of it
+        document.getElementById('logoutModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeLogoutModal();
+            }
+        });
+    </script>
+    
+    
+
+    
+
+    
+
+    <!-- ═══════════ AGRIBOT CHATBOT ═══════════ -->
+    
+</body>
+</html>
